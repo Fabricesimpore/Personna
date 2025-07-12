@@ -1,0 +1,51 @@
+{
+  "suites": [
+    {
+      "id": "fullPersonaRun",
+      "name": "Full Persona Run",
+      "description": "Complete user research session combining three specialized testing methodologies in sequence.",
+      "category": "Comprehensive Research",
+      "estimatedDuration": 19,
+      "difficulty": "advanced",
+      "tags": ["persona", "research", "comprehensive", "sequential"],
+      "featured": true,
+      "icon": "UserCheck",
+      "shellSequence": [
+        "SpotOnClickShell",
+        "SprintRecallShell",
+        "DeepDiveShell"
+      ],
+      "preTestInstructions": "This is a comprehensive user research session that will guide you through three sequential phases: click testing, memory recall, and workflow exploration. Please participate fully in each phase and think aloud throughout the process.",
+      "postTestQuestions": [
+        {
+          "id": "q1",
+          "question": "How comprehensive was this research experience?",
+          "type": "rating",
+          "required": true
+        },
+        {
+          "id": "q2",
+          "question": "Which phase was most valuable for understanding your needs?",
+          "type": "multiple-choice",
+          "options": ["Click testing", "Memory recall", "Workflow exploration", "All equally valuable"],
+          "required": true
+        },
+        {
+          "id": "q3",
+          "question": "What additional insights would you like to share?",
+          "type": "text",
+          "required": false
+        }
+      ],
+      "personaTraits": {
+        "name": "Research Participant",
+        "age": 0,
+        "occupation": "Various",
+        "experience": "Mixed",
+        "goals": ["Provide valuable feedback", "Share honest insights"],
+        "painPoints": ["Long sessions", "Unclear instructions"],
+        "preferences": ["Clear guidance", "Engaging experience", "Meaningful research"]
+      }
+    }
+  ]
+} 
