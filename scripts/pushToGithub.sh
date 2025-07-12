@@ -14,9 +14,12 @@ if ! git remote get-url origin >/dev/null 2>&1; then
   git remote add origin "$REMOTE_URL"
 fi
 
+# Get current branch name
+CURRENT_BRANCH=$(git branch --show-current)
+
 # Add, commit, and push
 git add .
 git commit -m "Save current progress"
-git push -u origin main
+git push -u origin "$CURRENT_BRANCH"
 
-echo "☑️ Code pushed to origin/main" 
+echo "☑️ Code pushed to origin/$CURRENT_BRANCH" 
