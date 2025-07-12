@@ -117,20 +117,20 @@ const CompletionPage: React.FC = () => {
             </h3>
             <div className="space-y-3 text-sm text-yellow-800">
               <p>• Your research data has been securely saved</p>
-              <p>• Our team will analyze your responses</p>
-              <p>• You may be contacted for follow-up questions</p>
-              <p>• Results will be shared within 5-7 business days</p>
+              <p>• Your persona has been automatically generated</p>
+              <p>• You can view your persona profile on the dashboard</p>
+              <p>• Your persona will be available for future reference</p>
             </div>
           </div>
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4">
             <Button 
-              onClick={() => navigate('/')}
+              onClick={() => navigate('/dashboard')}
               className="flex-1 flex items-center justify-center"
             >
               <Home className="h-4 w-4 mr-2" />
-              Return Home
+              View Your Persona
             </Button>
             <Button 
               onClick={() => navigate('/run-suite/fullPersonaRun')}

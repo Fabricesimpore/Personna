@@ -414,6 +414,37 @@ const TestSuiteRunnerContent: React.FC = () => {
         throw new Error('Failed to submit results');
       }
       
+      const runData = await response.json();
+      const finalRunId = runData.data?.runId || runId;
+      
+      // Finalize the test run to generate persona
+      if (finalRunId) {
+        const token = localStorage.getItem('authToken');
+        const finalizeResponse = await fetch('http://localhost:3001/api/tests/runs/finalize', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            runId: finalRunId,
+            suiteId: suiteId || '',
+            metadata: {
+              totalStages: suite.shellSequence.length,
+              completedStages: completedStages.length,
+              duration: Date.now() - startTime
+            }
+          })
+        });
+        
+        if (finalizeResponse.ok) {
+          const finalizeData = await finalizeResponse.json();
+          console.log('Persona generated:', finalizeData.personaId);
+        } else {
+          console.error('Failed to finalize test run');
+        }
+      }
+      
       // Clear localStorage
       localStorage.removeItem(`suite-progress-${suiteId}`);
       localStorage.removeItem('currentRunState');
